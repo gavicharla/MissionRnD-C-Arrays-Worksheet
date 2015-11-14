@@ -19,7 +19,75 @@ struct student {
 	char name[10];
 	int score;
 };
+int partition(struct student *x, int p, int r)
+{
+	int z = x[r - 1].score;
+	int i = p - 1;
+	int j = 0;
+	struct student temp;
+	int k;
+	for (j = i + 1; j < r - 1; j++)
+	{
+		if (x[j].score >= z)
+		{
+			i++;
+			for (k = 0; x[i].name[k] != '\0'; k++)
+			{
+				temp.name[k] = x[i].name[k];
+			}
+			temp.name[k] = '\0';
+			temp.score = x[i].score;
+			for (k = 0; x[j].name[k] != '\0'; k++)
+			{
+				x[i].name[k] = x[j].name[k];
+			}
+			x[i].name[k] = '\0';
+			x[i].score = x[j].score;
+			for (k = 0; temp.name[k] != '\0'; k++)
+			{
+				x[j].name[k] = temp.name[k];
+			}
+			x[j].name[k] = '\0';
+			x[j].score = temp.score;
 
+		}
+	}
+	for (k = 0; x[i + 1].name[k] != '\0'; k++)
+	{
+		temp.name[k] = x[i + 1].name[k];
+	}
+	temp.name[k] = '\0';
+	temp.score = x[i + 1].score;
+
+	for (k = 0; x[r - 1].name[k] != '\0'; k++)
+	{
+		x[i + 1].name[k] = x[r - 1].name[k];
+	}
+	x[i + 1].name[k] = '\0';
+	x[i + 1].score = x[r - 1].score;
+	for (k = 0; temp.name[k] != '\0'; k++)
+	{
+		x[r - 1].name[k] = temp.name[k];
+	}
+	x[r - 1].name[k] = '\0';
+	x[r - 1].score = temp.score;
+	return i + 1;
+}
+void quicksort(struct student *x, int p, int r)
+{
+	int q;
+	if (p < r)
+	{
+		q = partition(x, p, r);
+		quicksort(x, 0, q - 1);
+		quicksort(x, q + 1, r);
+	}
+}
 void * scoresDescendingSort(struct student *students, int len) {
-	return NULL;
+	if (students == NULL || len<1)
+		return NULL;
+	else
+	{
+		quicksort(students, 0, len);
+	}
 }

@@ -15,7 +15,7 @@ NOTES:
 
 void * sortedArrayPositionsChange(int *Arr, int len)
 {
-	if (*Arr == NULL || len < 1)
+	if (Arr == NULL || len < 1)
 		return NULL;
 	int count = 0,i=0,a=0,b=0;
 	while (i < len-1)
@@ -35,5 +35,4 @@ void * sortedArrayPositionsChange(int *Arr, int len)
 	int temp = *(Arr+a);
 	*(Arr+a) = *(Arr+b);
 	*(Arr+b) = temp;
-	return NULL;
 }

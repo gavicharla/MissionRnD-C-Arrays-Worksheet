@@ -29,6 +29,7 @@ void * studentsCount(int *Arr, int len, int score, int *lessCount, int *moreCoun
 		b++;
 		i++;
 		}*/
+		//this uses better binary search algo than linear search
 		if (len == 1)
 		{
 			if (Arr[0] > score)

@@ -44,7 +44,7 @@ int * sortedArrayInsertNumber(int *Arr, int len, int num)
 			ind = mid+1;
 		}
 		int max = ind + 1, i = len;
-		realloc(Arr, len + 1);
+		realloc(Arr,sizeof(int)*( len + 1));
 		while (i>=ind+1)
 		{
 			Arr[i] = Arr[i - 1];

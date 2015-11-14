@@ -39,7 +39,14 @@ namespace spec
 
 		TEST_METHOD(sortedArray)
 		{
-			int Arr[6] = { 1, 1, 2, 2, 3, 3 };
+			int *Arr;
+			Arr = (int *)malloc(sizeof(int)*(6));
+			Arr[0] = 1;
+			Arr[1] = 1;
+			Arr[2] = 2;
+			Arr[3] = 2;
+			Arr[4] = 3;
+			Arr[5] = 3;
 			removeArrayDuplicates(Arr, 6);
 			Assert::AreEqual(1, Arr[0], L"Value at index 0 should be 1", LINE_INFO());
 			Assert::AreEqual(2, Arr[1], L"Value at index 1 should be 2", LINE_INFO());

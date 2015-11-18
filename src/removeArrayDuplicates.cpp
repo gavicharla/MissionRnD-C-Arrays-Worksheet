@@ -93,5 +93,5 @@ void * removeArrayDuplicates(int *Arr, int len)
 	}
 
 
-	return NULL;
+	//return NULL;
 }

@@ -64,7 +64,14 @@ namespace spec
 
 		TEST_METHOD(KGreaterThanLength)
 		{
-			struct student students[3] = { { "stud1", 60 }, { "stud2", 70 }, { "stud3", 50 } };
+			struct student *students;
+			students = (struct student *)malloc(sizeof(struct student) * 3);
+			students[0].name = "stud1";
+			students[0].score = 60;
+			students[1].name = "stud2    ";
+			students[1].score = 70;
+			students[2].name = "stud1    ";
+			students[2].score = 50;
 			struct student **result = topKStudents(students, 3, 5);
 			int exp[] = { 50, 60, 70 };
 			Assert::IsTrue(validate(exp, 3, result), L"K greater than length case failed.", LINE_INFO());
@@ -72,7 +79,14 @@ namespace spec
 
 		TEST_METHOD(KValue1)
 		{
-			struct student students[3] = { { "stud1", 50 }, { "stud2", 60 }, { "stud3", 70 } };
+			struct student *students;
+			students = (struct student *)malloc(sizeof(struct student) * 3);
+			students[0].name = "stud1";
+			students[0].score = 50;
+			students[1].name = "stud2    ";
+			students[1].score = 60;
+			students[2].name = "stud1    ";
+			students[2].score = 70;
 			struct student **result = topKStudents(students, 3, 1);
 			Assert::AreEqual(70, result[0]->score, L"K value 1 case failed.", LINE_INFO());
 		}

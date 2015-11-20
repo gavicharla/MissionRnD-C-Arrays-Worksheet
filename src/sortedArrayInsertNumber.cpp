@@ -31,7 +31,7 @@ int * sortedArrayInsertNumber(int *Arr, int len, int num)
 		else
 		{
 			int min = 0, max = len - 1, mid = (min + max) / 2;
-			while (1)
+			while (1)//binary searching for the position to insert 
 			{
 				if (Arr[mid] == num || (Arr[mid]<num&&Arr[mid + 1]>num))
 					break;
@@ -41,16 +41,16 @@ int * sortedArrayInsertNumber(int *Arr, int len, int num)
 					max = mid;
 				mid = (min + max) / 2;
 			}
-			ind = mid+1;
+			ind = mid+1;//the index to be inserted in
 		}
 		int max = ind + 1, i = len;
 		realloc(Arr,sizeof(int)*( len + 1));
-		while (i>=ind+1)
+		while (i>=ind+1)//moving the elements
 		{
 			Arr[i] = Arr[i - 1];
 			i--;
 		}
-		Arr[ind] = num;
+		Arr[ind] = num;//inserting the number
 
 	}
 	return Arr;

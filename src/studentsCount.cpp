@@ -45,7 +45,7 @@ void * studentsCount(int *Arr, int len, int score, int *lessCount, int *moreCoun
 			int min = 0, max = len - 1, mid = (min + max) / 2;
 			while (1)
 			{
-				if (Arr[mid] == score || (Arr[mid]<score&&Arr[mid + 1]>score))
+				if (Arr[mid] == score || (Arr[mid]<score&&Arr[mid + 1]>score))//searching for the right spot ...if present finding the index using binary search
 					break;
 				else if (Arr[mid] < score)
 					min = mid;
@@ -56,7 +56,7 @@ void * studentsCount(int *Arr, int len, int score, int *lessCount, int *moreCoun
 			b = len - 1 - mid;
 			a = mid, i = 1;
 			int flag1 = 1, flag2 = 1;
-			while (flag1 == 1 || flag2 == 1)
+			while (flag1 == 1 || flag2 == 1)//checking for duplicates in the array ..if present then reducing the count
 			{
 				if (mid - i >= 0 && flag1 == 1)
 				{

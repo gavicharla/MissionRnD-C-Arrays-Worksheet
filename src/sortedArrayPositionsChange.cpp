@@ -24,15 +24,15 @@ void * sortedArrayPositionsChange(int *Arr, int len)
 		{
 			if (count == 0)
 			{
-				a = i;
+				a = i;//the first misplaced element
 				count++;
 			}
 			else
-				b = i + 1;
+				b = i + 1;//second misplaced element
 		}
 		i++;
 	}
 	int temp = *(Arr+a);
-	*(Arr+a) = *(Arr+b);
+	*(Arr+a) = *(Arr+b);//exchanging both
 	*(Arr+b) = temp;
 }

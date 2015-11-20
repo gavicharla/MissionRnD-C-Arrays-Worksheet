@@ -34,7 +34,7 @@ struct student ** topKStudents(struct student *students, int len, int K)
 		for (i = 0; i < K; i++)
 			s[i] = (struct student *)malloc(sizeof(struct student));
 		for (i = 0; i < K; i++)
-		{
+		{//just using bubble sort to find the top k position ...doing the loop just k times
 			for (j = i + 1; j < len; j++)
 			{
 				if (students[j].score>students[i].score)

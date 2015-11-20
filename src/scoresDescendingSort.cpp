@@ -21,12 +21,12 @@ struct student {
 };
 int partition(struct student *x, int p, int r)
 {
-	int z = x[r - 1].score;
+	int z = x[r ].score;
 	int i = p - 1;
 	int j = 0;
 	struct student temp;
 	int k;
-	for (j = i + 1; j < r - 1; j++)
+	for (j = i + 1; j < r ; j++)
 	{
 		if (x[j].score >= z)
 		{
@@ -59,18 +59,18 @@ int partition(struct student *x, int p, int r)
 	temp.name[k] = '\0';
 	temp.score = x[i + 1].score;
 
-	for (k = 0; x[r - 1].name[k] != '\0'; k++)
+	for (k = 0; x[r ].name[k] != '\0'; k++)
 	{
-		x[i + 1].name[k] = x[r - 1].name[k];
+		x[i + 1].name[k] = x[r].name[k];
 	}
 	x[i + 1].name[k] = '\0';
-	x[i + 1].score = x[r - 1].score;
+	x[i + 1].score = x[r].score;
 	for (k = 0; temp.name[k] != '\0'; k++)
 	{
-		x[r - 1].name[k] = temp.name[k];
+		x[r].name[k] = temp.name[k];
 	}
-	x[r - 1].name[k] = '\0';
-	x[r - 1].score = temp.score;
+	x[r ].name[k] = '\0';
+	x[r].score = temp.score;
 	return i + 1;
 }
 void quicksort(struct student *x, int p, int r)
@@ -78,7 +78,7 @@ void quicksort(struct student *x, int p, int r)
 	int q;
 	if (p < r)
 	{
-		q = partition(x, p, r);
+		q = partition(x, p, r);//partitioning the array to insert the pivot
 		quicksort(x, 0, q - 1);
 		quicksort(x, q + 1, r);
 	}
@@ -88,6 +88,6 @@ void * scoresDescendingSort(struct student *students, int len) {
 		return NULL;
 	else
 	{
-		quicksort(students, 0, len);
+		quicksort(students, 0, len-1);//using quick sort
 	}
 }
